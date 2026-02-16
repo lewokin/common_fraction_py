@@ -41,11 +41,21 @@ class CommonFraction:
     def __radd__(self, other: CommonFraction) -> CommonFraction:
         return self.__add__(other)
 
-    # def __sub__(self, other: CommonFraction) -> CommonFraction:
-    #     pass
+    def __sub__(self, other: CommonFraction) -> CommonFraction:
+        new_self_numerator = self.numerator * other.denominator
+        new_other_numerator = other.numerator * self.denominator
 
-    # def __rsub__(self, other: CommonFraction) -> CommonFraction:
-    #     pass
+        new_denominator = self.denominator * other.denominator
+
+        return CommonFraction(new_self_numerator - new_other_numerator, new_denominator)
+
+    def __rsub__(self, other: CommonFraction) -> CommonFraction:
+        new_self_numerator = self.numerator * other.denominator
+        new_other_numerator = other.numerator * self.denominator
+
+        new_denominator = self.denominator * other.denominator
+
+        return CommonFraction(new_other_numerator - new_self_numerator, new_denominator)
 
     # def __mul__(self, other: CommonFraction) -> CommonFraction:
     #     pass
