@@ -5,12 +5,21 @@ if sys.version_info < (3, 10):
     raise RuntimeError("CommonFraction requires Python 3.10 or newer.")
 
 from functools import total_ordering
+import math
 
 #@total_ordering
 class CommonFraction:
     def __init__(self, numerator: int, denominator: int) -> None:
-        self.numerator = numerator
-        self.denominator = denominator
+        if denominator == 0:
+            raise ZeroDivisionError("Error. Denominator can't eqaul 0.")
+        
+        if denominator < 0:
+            denominator = -denominator
+            numerator = -numerator
+
+        gdc = math.gcd(numerator, denominator)
+        self.numerator = numerator // gdc
+        self.denominator = denominator // gdc
 
     # def __str__(self) -> str:
     #     pass
