@@ -27,8 +27,8 @@ class CommonFraction:
         
         return f"{self.numerator}/{self.denominator}"
 
-    # def __repr__(self) -> str:
-    #     return f"CommonFraction({self.numerator}, {self.denominator})"
+    def __repr__(self) -> str:
+        return f"CommonFraction({self.numerator}, {self.denominator})"
     
     # def __add__(self, other: CommonFraction) -> CommonFraction:
     #     pass
