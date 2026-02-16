@@ -63,11 +63,11 @@ class CommonFraction:
     def __rmul__(self, other: CommonFraction) -> CommonFraction:
         return self.__mul__(other)
 
-    # def __truediv__(self, other: CommonFraction) -> CommonFraction:
-    #     pass
+    def __truediv__(self, other: CommonFraction) -> CommonFraction:
+        return CommonFraction(self.numerator * other.denominator, self.denominator * other.numerator)
 
-    # def __rtruediv__(self, other: CommonFraction) -> CommonFraction:
-    #     pass
+    def __rtruediv__(self, other: CommonFraction) -> CommonFraction:
+        return CommonFraction(other.numerator * self.denominator, other.denominator * self.numerator)
 
     # def __pow__(self, other: int) -> CommonFraction:
     #     pass
