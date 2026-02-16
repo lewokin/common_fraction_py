@@ -21,8 +21,11 @@ class CommonFraction:
         self.numerator = numerator // gdc
         self.denominator = denominator // gdc
 
-    # def __str__(self) -> str:
-    #     pass
+    def __str__(self) -> str:
+        if self.denominator == 1:
+            return str(self.numerator)
+        
+        return f"{self.numerator}/{self.denominator}"
 
     # def __repr__(self) -> str:
     #     return f"CommonFraction({self.numerator}, {self.denominator})"
