@@ -57,11 +57,11 @@ class CommonFraction:
 
         return CommonFraction(new_other_numerator - new_self_numerator, new_denominator)
 
-    # def __mul__(self, other: CommonFraction) -> CommonFraction:
-    #     pass
+    def __mul__(self, other: CommonFraction) -> CommonFraction:
+        return CommonFraction(self.numerator * other.numerator, self.denominator * other.denominator)
 
-    # def __rmul__(self, other: CommonFraction) -> CommonFraction:
-    #     return self.__mul__(other)
+    def __rmul__(self, other: CommonFraction) -> CommonFraction:
+        return self.__mul__(other)
 
     # def __truediv__(self, other: CommonFraction) -> CommonFraction:
     #     pass
