@@ -87,8 +87,8 @@ class CommonFraction:
         
         return new_self_numerator < new_other_numerator
 
-    # def __neg__(self) -> CommonFraction:
-    #     pass
+    def __neg__(self) -> CommonFraction:
+        return CommonFraction(-self.numerator, self.denominator)
 
     # def __abs__(self) -> CommonFraction:
     #     pass
