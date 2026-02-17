@@ -7,7 +7,7 @@ if sys.version_info < (3, 10):
 from functools import total_ordering
 import math
 
-#@total_ordering
+@total_ordering
 class CommonFraction:
     def __init__(self, numerator: int, denominator: int) -> None:
         if denominator == 0:
@@ -81,8 +81,11 @@ class CommonFraction:
         
         return self.numerator == other.numerator and self.denominator == other.denominator
 
-    # def __lt__(self, other: CommonFraction | int | float) -> bool:
-    #     pass
+    def __lt__(self, other: CommonFraction) -> bool:
+        new_self_numerator = self.numerator * other.denominator
+        new_other_numerator = other.numerator * self.denominator
+        
+        return new_self_numerator < new_other_numerator
 
     # def __neg__(self) -> CommonFraction:
     #     pass
