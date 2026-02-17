@@ -75,8 +75,11 @@ class CommonFraction:
 
         return CommonFraction(self.numerator ** other, self.denominator ** other)
 
-    # def __eq__(self, other: object) -> bool:
-    #     pass
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, CommonFraction):
+            return NotImplemented
+        
+        return self.numerator == other.numerator and self.denominator == other.denominator
 
     # def __lt__(self, other: CommonFraction | int | float) -> bool:
     #     pass
