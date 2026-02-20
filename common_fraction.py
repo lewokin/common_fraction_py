@@ -105,5 +105,5 @@ class CommonFraction:
     def reciprocal(self) -> CommonFraction:
         return CommonFraction(self.denominator, self.numerator)
 
-    # def to_dict(self) -> dict:
-    #     pass
+    def to_dict(self) -> dict[str, int]:
+        return {"numerator": self.numerator, "denominator": self.denominator}
