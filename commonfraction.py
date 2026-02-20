@@ -4,29 +4,8 @@ import sys
 if sys.version_info < (3, 10):
     raise RuntimeError("CommonFraction requires Python 3.10 or newer.")
 
-from functools import total_ordering, singledispatch
+from functools import total_ordering
 import math
-
-@singledispatch
-def to_CommonFraction(var: object) -> CommonFraction:
-    raise TypeError(f"Conversion from type {type(var).__name__} is not supported")
-
-# @to_CommonFraction.register(int)
-# def _(var: int) -> CommonFraction:
-#     pass
-
-# @to_CommonFraction.register(float)
-# def _(var: int) -> CommonFraction:
-#     pass
-
-# @to_CommonFraction.register(dict)
-# def _(var: int) -> CommonFraction:
-#     pass
-
-# @to_CommonFraction.register(str)
-# def _(var: int) -> CommonFraction:
-#     pass
-#REMBEBER THAT @to_CommonFraction.register(CommonFraction) IS DEFINED UNDER THE CommonFraction CLASS
 
 @total_ordering
 class CommonFraction:
@@ -113,7 +92,3 @@ class CommonFraction:
 
     def to_dict(self) -> dict[str, int]:
         return {"numerator": self.numerator, "denominator": self.denominator}
-    
-# @to_CommonFraction.register(CommonFraction)
-# def _(var: int) -> CommonFraction:
-#     pass
