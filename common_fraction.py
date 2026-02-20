@@ -96,8 +96,8 @@ class CommonFraction:
     def __float__(self) -> float:
         return self.numerator / self.denominator
 
-    # def __int__(self) -> int:
-    #     pass
+    def __int__(self) -> int:
+        return int(float(self))
 
     # def __hash__(self) -> int:
     #     pass
