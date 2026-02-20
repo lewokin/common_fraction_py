@@ -93,8 +93,8 @@ class CommonFraction:
     def __abs__(self) -> CommonFraction:
         return CommonFraction(abs(self.numerator), self.denominator)
 
-    # def __float__(self) -> float:
-    #     pass
+    def __float__(self) -> float:
+        return self.numerator / self.denominator
 
     # def __int__(self) -> int:
     #     pass
