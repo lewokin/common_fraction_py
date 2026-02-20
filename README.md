@@ -66,7 +66,10 @@ print(f1 < CommonFraction(3, 4))  # True
 
 
 # ⚠ Important information
-Due to the assumptions used in the design, the CommonFraction class is a **CLOSED** ecosystem and cannot be used with standard Python classes (int, float). Only conversion from CommonFraction to int/float/str is possible. Performing the operation in the other direction is **IMPOSSIBLE**. This is required to ensure the correctness of calculations and ease of use.
+~~Due to the assumptions used in the design, the CommonFraction class is a **CLOSED** ecosystem and cannot be used with standard Python classes (int, float). Only conversion from CommonFraction to int/float/str is possible. Performing the operation in the other direction is **IMPOSSIBLE**. This is required to ensure the correctness of calculations and ease of use.~~
+
+Never mind. After much deliberation, I decided that a programmer is (most likely) an adult and responsible person, so if they want to ruin the accuracy of their calculations by mixing CommonFraction and float, I won't fight tooth and nail to prevent it. I am currently working on making it possible to mix arithmetic operations with other data types. For more updates, please visit the “feature/universal-converter” branch.
+
 
 # 🐍 List of supported methods
 | Method | Support |
@@ -96,7 +99,7 @@ Due to the assumptions used in the design, the CommonFraction class is a **CLOSE
 🚧: during implementation \
 💡: planned for future implementation
 
-[^1]: The only method where you can use the int class on the CommonFraction class
+[^1]: The only method where you can use the int class on the CommonFraction class (for now.)
 [^2]: Due to the way Python logic works, the ‘ne’ method is also supported.
 [^3]: Thanks to the use of the total_ordering decorator, the ‘le’, ‘gt’, and ‘ge’ methods are also supported.
 
