@@ -26,7 +26,7 @@ def to_CommonFraction(var: object) -> CommonFraction:
 # @to_CommonFraction.register(str)
 # def _(var: int) -> CommonFraction:
 #     pass
-#REMBEBER THAT @to_CommonFraction.register(CommonFraction) IS DEFINED UNDER THA CommonFraction CLASS
+#REMBEBER THAT @to_CommonFraction.register(CommonFraction) IS DEFINED UNDER THE CommonFraction CLASS
 
 @total_ordering
 class CommonFraction:
