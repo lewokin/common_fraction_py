@@ -89,8 +89,8 @@ Due to the assumptions used in the design, the CommonFraction class is a **CLOSE
 | float | ✅ |
 | int | ✅ |
 | hash | ✅ |
-| reciprocal | 🚧 |
-| to_dict | 🚧 |
+| reciprocal | ✅ |
+| to_dict | ✅ |
 
 ✅: implemented \
 🚧: during implementation \
