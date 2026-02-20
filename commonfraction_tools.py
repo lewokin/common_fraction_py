@@ -10,17 +10,17 @@ def to_CommonFraction(var: object) -> CommonFraction:
 #     pass
 
 # @to_CommonFraction.register(float)
-# def _(var: int) -> CommonFraction:
+# def _(var: float) -> CommonFraction:
 #     pass
 
 # @to_CommonFraction.register(dict)
-# def _(var: int) -> CommonFraction:
+# def _(var: dict) -> CommonFraction:
 #     pass
 
 # @to_CommonFraction.register(str)
-# def _(var: int) -> CommonFraction:
+# def _(var: str) -> CommonFraction:
 #     pass
 
 # @to_CommonFraction.register(CommonFraction)
-# def _(var: int) -> CommonFraction:
+# def _(var: CommonFraction) -> CommonFraction:
 #     pass
