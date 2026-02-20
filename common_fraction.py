@@ -101,3 +101,9 @@ class CommonFraction:
 
     def __hash__(self) -> int:
         return hash((type(self), self.numerator, self.denominator))
+    
+    def reciprocal(self) -> CommonFraction:
+        return CommonFraction(self.denominator, self.numerator)
+
+    # def to_dict(self) -> dict:
+    #     pass
