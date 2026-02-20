@@ -86,11 +86,11 @@ Due to the assumptions used in the design, the CommonFraction class is a **CLOSE
 | lt[^3] | ✅ |
 | neg | ✅ |
 | abs | ✅ |
-| float | 🚧 |
-| int | 🚧 |
-| hash | 🚧 |
-| reciprocal | 💡 |
-| to_dict | 💡 |
+| float | ✅ |
+| int | ✅ |
+| hash | ✅ |
+| reciprocal | 🚧 |
+| to_dict | 🚧 |
 
 ✅: implemented \
 🚧: during implementation \
