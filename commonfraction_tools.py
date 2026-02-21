@@ -45,9 +45,21 @@ def _(var: float, max_denominator: int = 1_000_000) -> CommonFraction:
     
     return CommonFraction(sign * h1, k1)
 
-# @to_CommonFraction.register(dict)
-# def _(var: dict) -> CommonFraction:
-#     pass
+@to_CommonFraction.register(dict)
+def _(var: dict) -> CommonFraction:
+    if len(var) != 2:
+        raise TypeError("Variable cannot be converted to CommonFraction: dict have incorrect format.")
+    
+    if ("numerator" not in var) or ("denominator" not in var):
+        raise TypeError("Variable cannot be converted to CommonFraction: dict have incorrect format.")
+    
+    if type(var["numerator"]) != int:
+        raise TypeError("Variable cannot be converted to CommonFraction: value of numerator has to be int type")
+    
+    if type(var["denominator"]) != int:
+        raise TypeError("Variable cannot be converted to CommonFraction: value of denominator has to be int type")
+    
+    return CommonFraction(var['numerator'], var["denominator"])
 
 # @to_CommonFraction.register(str)
 # def _(var: str) -> CommonFraction:
