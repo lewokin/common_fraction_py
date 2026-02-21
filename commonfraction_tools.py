@@ -5,9 +5,9 @@ from commonfraction import CommonFraction
 def to_CommonFraction(var: object) -> CommonFraction:
     raise TypeError(f"Conversion from type {type(var).__name__} is not supported")
 
-# @to_CommonFraction.register(int)
-# def _(var: int) -> CommonFraction:
-#     pass
+@to_CommonFraction.register(int)
+def _(var: int) -> CommonFraction:
+    return CommonFraction(var, 1)
 
 # @to_CommonFraction.register(float)
 # def _(var: float) -> CommonFraction:
