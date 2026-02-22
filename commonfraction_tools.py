@@ -61,9 +61,20 @@ def _(var: dict) -> CommonFraction:
     
     return CommonFraction(var['numerator'], var["denominator"])
 
-# @to_CommonFraction.register(str)
-# def _(var: str) -> CommonFraction:
-#     pass
+@to_CommonFraction.register(str)
+def _(var: str) -> CommonFraction:
+    parts = var.split("/")
+
+    if len(parts) != 2:
+        raise ValueError("Variable cannot be converted to CommonFraction: str has incorrect format.")
+    
+    try:
+        numerator = int(parts[0])
+        denominator = int(parts[1])
+    except ValueError:
+        raise TypeError("Variable cannot be converted to CommonFraction: numerator and denominator must be integers.")
+        
+    return CommonFraction(numerator, denominator)
 
 # @to_CommonFraction.register(CommonFraction)
 # def _(var: CommonFraction) -> CommonFraction:
