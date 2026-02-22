@@ -50,9 +50,11 @@ def _(var: str) -> CommonFraction:
         
     return CommonFraction(numerator, denominator)
 
-# @to_CommonFraction.register(CommonFraction)
-# def _(var: CommonFraction) -> CommonFraction:
-#     pass
+@to_CommonFraction.register(CommonFraction)
+def _(var: CommonFraction) -> CommonFraction:
+    return var
+
+
 
 def approximate_to_fraction(var: float | Decimal, max_denominator: int) -> tuple[int, int]:
     if var == 0:
