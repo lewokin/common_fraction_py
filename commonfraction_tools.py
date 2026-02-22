@@ -1,4 +1,5 @@
 import math
+from decimal import Decimal
 from functools import singledispatch
 from commonfraction import CommonFraction
 
@@ -12,38 +13,7 @@ def _(var: int) -> CommonFraction:
 
 @to_CommonFraction.register(float)
 def _(var: float, max_denominator: int = 1_000_000) -> CommonFraction:
-    if var == 0.0:
-        return CommonFraction(0, 1)
-    
-    if var.is_integer():
-        return CommonFraction(int(var), 1)
-    
-    sign = -1 if var < 0 else 1
-    var = abs(var)
-
-    h0, h1 = 0, 1
-    k0, k1 = 1, 0
-    r = var
-    while True:
-        a = math.floor(r)
-
-        h2 = a * h1 + h0
-        k2 = a * k1 + k0
-
-        if k2 > max_denominator:
-            break
-
-        h0, h1 = h1, h2
-        k0, k1 = k1, k2
-
-        fractional_part = r - a
-
-        if fractional_part < 1e-10: 
-            break
-
-        r = 1.0 / fractional_part
-    
-    return CommonFraction(sign * h1, k1)
+    return CommonFraction(*approximate_to_fraction(var, max_denominator))
 
 @to_CommonFraction.register(dict)
 def _(var: dict) -> CommonFraction:
@@ -79,3 +49,37 @@ def _(var: str) -> CommonFraction:
 # @to_CommonFraction.register(CommonFraction)
 # def _(var: CommonFraction) -> CommonFraction:
 #     pass
+
+def approximate_to_fraction(var: float | Decimal, max_denominator: int) -> tuple[int, int]:
+    if var == 0.0:
+        return (0, 1)
+    
+    if var % 1 == 0:
+        return (int(var), 1)
+    
+    sign = -1 if var < 0 else 1
+    var = abs(var)
+
+    h0, h1 = 0, 1
+    k0, k1 = 1, 0
+    r = var
+    while True:
+        a = math.floor(r)
+
+        h2 = a * h1 + h0
+        k2 = a * k1 + k0
+
+        if k2 > max_denominator:
+            break
+
+        h0, h1 = h1, h2
+        k0, k1 = k1, k2
+
+        fractional_part = r - a
+
+        if fractional_part < 1e-10: 
+            break
+
+        r = 1.0 / fractional_part
+    
+    return (sign * h1, k1)
