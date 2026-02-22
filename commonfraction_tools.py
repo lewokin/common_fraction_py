@@ -15,6 +15,10 @@ def _(var: int) -> CommonFraction:
 def _(var: float, max_denominator: int = 1_000_000) -> CommonFraction:
     return CommonFraction(*approximate_to_fraction(var, max_denominator))
 
+@to_CommonFraction.register(Decimal)
+def _(var: Decimal, max_denominator: int = 1_000_000) -> CommonFraction:
+    return CommonFraction(*approximate_to_fraction(var, max_denominator))
+
 @to_CommonFraction.register(dict)
 def _(var: dict) -> CommonFraction:
     if len(var) != 2:
@@ -51,7 +55,7 @@ def _(var: str) -> CommonFraction:
 #     pass
 
 def approximate_to_fraction(var: float | Decimal, max_denominator: int) -> tuple[int, int]:
-    if var == 0.0:
+    if var == 0:
         return (0, 1)
     
     if var % 1 == 0:
@@ -77,9 +81,13 @@ def approximate_to_fraction(var: float | Decimal, max_denominator: int) -> tuple
 
         fractional_part = r - a
 
-        if fractional_part < 1e-10: 
-            break
+        if isinstance(var, float):
+            if fractional_part < 1e-10: 
+                break
+        else:
+            if fractional_part < Decimal("1e-10"): 
+                break
 
-        r = 1.0 / fractional_part
+        r = 1 / fractional_part
     
     return (sign * h1, k1)
