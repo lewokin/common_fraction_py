@@ -1,26 +1,33 @@
 import math
 from decimal import Decimal
 from functools import singledispatch
-from commonfraction import CommonFraction
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from commonfraction import CommonFraction
 
 @singledispatch
-def to_CommonFraction(var: object) -> CommonFraction:
+def to_CommonFraction(var: object) -> "CommonFraction":
     raise TypeError(f"Conversion from type {type(var).__name__} is not supported")
 
 @to_CommonFraction.register(int)
-def _(var: int) -> CommonFraction:
+def _(var: int) -> "CommonFraction":
+    from commonfraction import CommonFraction
     return CommonFraction(var, 1)
 
 @to_CommonFraction.register(float)
-def _(var: float, max_denominator: int = 1_000_000) -> CommonFraction:
+def _(var: float, max_denominator: int = 1_000_000) -> "CommonFraction":
+    from commonfraction import CommonFraction
     return CommonFraction(*approximate_to_fraction(var, max_denominator))
 
 @to_CommonFraction.register(Decimal)
-def _(var: Decimal, max_denominator: int = 1_000_000) -> CommonFraction:
+def _(var: Decimal, max_denominator: int = 1_000_000) -> "CommonFraction":
+    from commonfraction import CommonFraction
     return CommonFraction(*approximate_to_fraction(var, max_denominator))
 
 @to_CommonFraction.register(dict)
-def _(var: dict) -> CommonFraction:
+def _(var: dict) -> "CommonFraction":
+    from commonfraction import CommonFraction
     if len(var) != 2:
         raise TypeError("Variable cannot be converted to CommonFraction: dict have incorrect format.")
     
@@ -36,7 +43,8 @@ def _(var: dict) -> CommonFraction:
     return CommonFraction(var['numerator'], var["denominator"])
 
 @to_CommonFraction.register(str)
-def _(var: str) -> CommonFraction:
+def _(var: str) -> "CommonFraction":
+    from commonfraction import CommonFraction
     parts = var.split("/")
 
     if len(parts) != 2:
@@ -50,11 +58,11 @@ def _(var: str) -> CommonFraction:
         
     return CommonFraction(numerator, denominator)
 
-@to_CommonFraction.register(CommonFraction)
-def _(var: CommonFraction) -> CommonFraction:
-    return var
-
-
+def _register_commonfraction():
+    from commonfraction import CommonFraction
+    @to_CommonFraction.register(CommonFraction)
+    def _(var: "CommonFraction") -> "CommonFraction":
+        return var
 
 def approximate_to_fraction(var: float | Decimal, max_denominator: int) -> tuple[int, int]:
     if var == 0:
