@@ -98,7 +98,7 @@ CommonFraction only support dict and str data types in following formats
 # For dict:
 {"numerator": int(), "denominator": int()}
 
-# for str:
+# For str:
 "int()/int()"
 ```
 
