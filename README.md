@@ -76,7 +76,7 @@ print(f1 < CommonFraction(3, 4))  # True
 | `__rmul__` | int, float, Decimal, dict, str |
 | `__truediv__` | int, float, Decimal, dict, str |
 | `__rtruediv__` | int, float, Decimal, dict, str |
-| `__pow__` | int, float, Decimal, dict, str |
+| `__pow__` | int |
 | `__eq__` | int, float, Decimal, dict, str |
 | `__ne__` | int, float, Decimal, dict, str |
 | `__lt__` | int, float, Decimal, dict, str |
