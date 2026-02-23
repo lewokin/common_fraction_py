@@ -6,6 +6,7 @@ if sys.version_info < (3, 10):
 
 from functools import total_ordering
 from commonfraction_tools import to_CommonFraction
+from decimal import Decimal
 import math
 
 @total_ordering
@@ -99,6 +100,9 @@ class CommonFraction:
 
     def to_dict(self) -> dict[str, int]:
         return {"numerator": self.numerator, "denominator": self.denominator}
+    
+    def to_decimal(self) -> Decimal:
+        return Decimal(self.numerator) / Decimal(self.denominator)
 
 from commonfraction_tools import _register_commonfraction
 _register_commonfraction()
