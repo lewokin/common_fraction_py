@@ -68,7 +68,7 @@ class CommonFraction:
 
     def __pow__(self, other: int) -> CommonFraction:
         if other < 0:
-            return CommonFraction(self.denominator ** abs(other), self.denominator ** abs(other))
+            return CommonFraction(self.denominator ** abs(other), self.numerator ** abs(other))
 
         return CommonFraction(self.numerator ** other, self.denominator ** other)
 
