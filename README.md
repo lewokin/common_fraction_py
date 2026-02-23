@@ -30,7 +30,6 @@ print(f"My fraction: {f1}")  # Output: 1/2
 ## 🛡️ Safety & Error Handling
 The class implements several safeguards:
 * ZeroDivisionError: Prevents the creation of a fraction with a denominator of 0.
-* Type Safety: Comparison operators (like ==) gracefully return False or NotImplemented instead of crashing when compared with incompatible types (e.g., str).
 * Immutability: Arithmetic operations return new instances, leaving the original operands unchanged.
 
 ## 🧮 Examples
@@ -64,41 +63,44 @@ print(f1 == f2)  # True (since 2/4 is simplified to 1/2)
 print(f1 < CommonFraction(3, 4))  # True
 ```
 
-
-# ⚠ Important information
-Due to the assumptions used in the design, the CommonFraction class is a **CLOSED** ecosystem and cannot be used with standard Python classes (int, float). Only conversion from CommonFraction to int/float/str is possible. Performing the operation in the other direction is **IMPOSSIBLE**. This is required to ensure the correctness of calculations and ease of use.
-
 # 🐍 List of supported methods
-| Method | Support |
+| Method | Supported data types |
 | :------: | :------: |
-| str | ✅ |
-| repr | ✅ |
-| add | ✅ |
-| radd | ✅ |
-| sub | ✅ |
-| rsub | ✅ |
-| mul | ✅ |
-| rmul | ✅ |
-| truediv | ✅ |
-| rtruediv | ✅ |
-| pow[^1] | ✅ |
-| eq[^2] | ✅ |
-| lt[^3] | ✅ |
-| neg | ✅ |
-| abs | ✅ |
-| float | ✅ |
-| int | ✅ |
-| hash | ✅ |
-| reciprocal | ✅ |
-| to_dict | ✅ |
+| `__str__` | N/A |
+| `__repr__` | N/A |
+| `__add__` | int, float, Decimal, dict, str |
+| `__radd__` | int, float, Decimal, dict, str |
+| `__sub__` | int, float, Decimal, dict, str |
+| `__rsub__` | int, float, Decimal, dict, str |
+| `__mul__` | int, float, Decimal, dict, str |
+| `__rmul__` | int, float, Decimal, dict, str |
+| `__truediv__` | int, float, Decimal, dict, str |
+| `__rtruediv__` | int, float, Decimal, dict, str |
+| `__pow__` | int, float, Decimal, dict, str |
+| `__eq__` | int, float, Decimal, dict, str |
+| `__ne__` | int, float, Decimal, dict, str |
+| `__lt__` | int, float, Decimal, dict, str |
+| `__le__` | int, float, Decimal, dict, str |
+| `__gt__` | int, float, Decimal, dict, str |
+| `__ge__` | int, float, Decimal, dict, str |
+| `__neg__` | N/A |
+| `__abs__` | N/A |
+| `__float__` | N/A |
+| `__int__` | N/A |
+| `__hash__` | N/A |
+| reciprocal | N/A |
+| to_dict | N/A |
+| to_decimal | N/A |
 
-✅: implemented \
-🚧: during implementation \
-💡: planned for future implementation
+⚠️Attention
+CommonFraction only support dict and str data types in following formats
+```python
+# For dict:
+{"numerator": int(), "denominator": int()}
 
-[^1]: The only method where you can use the int class on the CommonFraction class
-[^2]: Due to the way Python logic works, the ‘ne’ method is also supported.
-[^3]: Thanks to the use of the total_ordering decorator, the ‘le’, ‘gt’, and ‘ge’ methods are also supported.
+# for str:
+"int()/int()"
+```
 
-## 📄 License
+# 📄 License
 This project is open-source and available under the [MIT License](/LICENSE).
