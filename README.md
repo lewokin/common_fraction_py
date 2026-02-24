@@ -1,3 +1,5 @@
+![Google Gemini](https://img.shields.io/badge/google%20gemini-8E75B2?style=for-the-badge&logo=google%20gemini&logoColor=white)
+
 # ➗ Common Fraction
 **CommonFraction** is a robust, safe, and precise implementation of common fractions in Python.
 
