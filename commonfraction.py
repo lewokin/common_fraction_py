@@ -99,7 +99,7 @@ class CommonFraction:
         return CommonFraction(self.denominator, self.numerator)
 
     def to_dict(self) -> dict[str, int]:
-        return {"numerator": self.numerator, "denominator": self.denominator}
+        return self.__dict__
     
     def to_decimal(self) -> Decimal:
         return Decimal(self.numerator) / Decimal(self.denominator)
