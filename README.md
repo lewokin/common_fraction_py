@@ -17,10 +17,10 @@ The main goal of this library is to perform mathematical operations **without th
 Python 3.10+
 
 ## 🚀 Installation & Usage
-Simply import the `CommonFraction` class into your project.
+Simply download the commonfraction.py file from the repository and import the `CommonFraction` class into your project.
 
 ```python
-from common_fraction import CommonFraction
+from commonfraction import CommonFraction
 
 # Creating a fraction (automatic simplification)
 f1 = CommonFraction(2, 4)  # Result: 1/2
@@ -68,8 +68,6 @@ print(f1 < CommonFraction(3, 4))  # True
 # 🐍 List of supported methods
 | Method | Supported data types |
 | :------: | :------: |
-| `__str__` | N/A |
-| `__repr__` | N/A |
 | `__add__` | int, float, Decimal, dict, str |
 | `__radd__` | int, float, Decimal, dict, str |
 | `__sub__` | int, float, Decimal, dict, str |
@@ -85,14 +83,7 @@ print(f1 < CommonFraction(3, 4))  # True
 | `__le__` | int, float, Decimal, dict, str |
 | `__gt__` | int, float, Decimal, dict, str |
 | `__ge__` | int, float, Decimal, dict, str |
-| `__neg__` | N/A |
-| `__abs__` | N/A |
-| `__float__` | N/A |
-| `__int__` | N/A |
-| `__hash__` | N/A |
-| reciprocal | N/A |
-| to_dict | N/A |
-| to_decimal | N/A |
+
 
 ⚠️Attention
 CommonFraction only support dict and str data types in following formats
